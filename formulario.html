@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Cabecera -->
+  <header>
+    <img src="images/equipos/basconia.png" alt="CD Basconia" class="team-logo">
+    <h1>CONTACTO</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="plantilla.html">Plantilla</a></li>
+        <li><a href="partidos.html">Partidos</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="form-section">
+      <h2>¡HAZTE SOCIO!</h2>
+      <p>Rellena el siguiente formulario para formar parte de nuestra familia.</p>
+
+      <form class="form-socio" onsubmit="return mostrarConfirmacion(event)">
+        <div class="form-group">
+          <label for="nombre">Nombre completo:</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}" placeholder="123456789" required>
+        </div>
+
+        <div class="form-group">
+          <label for="dni">DNI:</label>
+          <input type="text" id="dni" name="dni" pattern="[0-9]{8}[A-Za-z]{1}" placeholder="12345678A" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cuota">Tipo de abono:</label>
+          <select id="cuota" name="cuota" required>
+            <option value="">Selecciona una opción</option>
+            <option value="adulto">Socio adulto - 60€/año</option>
+            <option value="juvenil">Socio juvenil - 30€/año</option>
+            <option value="infantil">Socio infantil - 15€/año</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-enviar">CONFIRMAR</button>
+      </form>
+
+      <p id="mensaje-confirmacion" class="confirmacion"></p>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025</p>
+    <p>C.D. Basconia<p>
+    <p>Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Confirmación de socio -->
+  <script>
+    function mostrarConfirmacion(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const mensaje = document.getElementById('mensaje-confirmacion');
+      mensaje.textContent = `¡Gracias ${nombre}!\n Tu solicitud para hacerte socio ha sido registrada correctamente.`;
+      mensaje.classList.add('visible');
+      document.querySelector('.form-socio').reset();
+    }
+  </script>
+</body>
+</html>
